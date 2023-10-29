@@ -19,7 +19,9 @@ function getEnketoViewUlr(formid, submissionId, username,password) {
     const headers = new Headers();
     console.log(username);
     console.log(password);
+    console.log(apiUrl);
     headers.set('Authorization', 'Basic ' + btoa(username + ":" + password));
+    console.log(headers.get('Authorization'));
     fetch(apiUrl,
         {
             method: 'GET',

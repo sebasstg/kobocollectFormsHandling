@@ -5,13 +5,20 @@ function getEnketoViewUlr(formid, submissionId, username, password) {
     const headers = new Headers();
     console.log(username);
     console.log(password);
-    headers.set('Authorization', 'Basic ' + btoa(username + ":" + password));
+
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'application/json');
+    headers.append('Authorization', 'Basic ' + btoa(username + ":" +  password));
+    headers.append('Origin','http://localhost:63343');
+
+    console.log(headers);
+    console.log(headers.get('Authorization'));
     fetch(apiUrl,
         {
+            mode: "cors",
             method: 'GET',
             headers: headers,
-            mode: 'no-cors', // <---
-            cache: 'default'
+            credentials: 'include',
         }
     )
         .then(response => response.json())
@@ -40,12 +47,13 @@ document.body.appendChild(parameterDisplay);
 window.onload = function () {
     console.log('onload:')
     console.log(document)
-    const form = document.getElementById('loginForm');
+    const button1 = document.getElementById('button1');
     console.log('form:')
-    console.log(form)
+    console.log(button1)
 
 
-    form.addEventListener('submit', function (event) {
+    button1.addEventListener('click', function (event) {
+        console.log('-button1');
         event.preventDefault();
 
         // Get username and password from the form
@@ -57,5 +65,18 @@ window.onload = function () {
         console.log('url: ' + enketoUrl)
     });
 };
+
+function testing(){
+    console.log('test');
+    username = 'elsalvador_kobo';
+    password = 'KoBoElSalvador';
+
+// Make an API call with Basic Authentication headers
+
+
+//console.log(headers);
+
+    getEnketoViewUlr('aPJeBGZLjjJwgLZaYZQtsm','35239549',username, password);
+}
 
 
