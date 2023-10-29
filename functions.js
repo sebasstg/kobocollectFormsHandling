@@ -2,7 +2,7 @@ function getEnketoViewUlr(formId, submissionId, username, password) {
     // code to be executed
     // return statement (optional)
 
-    const apiUrl = 'http://localhost:8080/osmosys_sv/api/utils/test1'; // Replace with your API endpoint URL
+    const apiUrl = 'https://imecuador.unhcr.org/osmosys_sv/api/utils/test1'; // Replace with your API endpoint URL
     const headers = new Headers();
 
     fetch(apiUrl,
@@ -16,13 +16,10 @@ function getEnketoViewUlr(formId, submissionId, username, password) {
         }
     )
         .then(response => {
-            console.log('error             x123'+response.ok);
             if (response.ok) {
 
-                console.log('error             x123 ok');
                 return response.json();
             }else {
-                console.error('error             x123 NO ok');
                 throw new Error(reponse.value);
             }
         })
@@ -75,18 +72,3 @@ window.onload = function () {
         console.log('url: ' + enketoUrl)
     });
 };
-
-function testing() {
-    console.log('test');
-    username = 'elsalvador_kobo';
-    password = 'KoBoElSalvador';
-
-// Make an API call with Basic Authentication headers
-
-
-//console.log(headers);
-
-    getEnketoViewUlr('aPJeBGZLjjJwgLZaYZQtsm', '35239549', username, password);
-}
-
-
