@@ -8,9 +8,11 @@ function getEnketoViewUlr(formid, submissionId, username, password) {
 
     headers.append('Content-Type', 'application/json');
     headers.append('Accept', 'application/json');
-    headers.append('Authorization', 'Basic ' + btoa(username + ":" +  password));
-    headers.append('Origin','http://localhost:63343');
-
+    headers.append('Authorization', 'Basic ' + btoa(username + ":" + password));
+    //headers.append('Origin', 'http://localhost:63343');
+    //headers.append("Access-Control-Allow-Origin", "*");
+    headers.append("Access-Control-Allow-Headers",
+        "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
     console.log(headers);
     console.log(headers.get('Authorization'));
     fetch(apiUrl,
@@ -66,7 +68,7 @@ window.onload = function () {
     });
 };
 
-function testing(){
+function testing() {
     console.log('test');
     username = 'elsalvador_kobo';
     password = 'KoBoElSalvador';
@@ -76,7 +78,7 @@ function testing(){
 
 //console.log(headers);
 
-    getEnketoViewUlr('aPJeBGZLjjJwgLZaYZQtsm','35239549',username, password);
+    getEnketoViewUlr('aPJeBGZLjjJwgLZaYZQtsm', '35239549', username, password);
 }
 
 
