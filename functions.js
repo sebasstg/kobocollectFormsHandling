@@ -68,7 +68,7 @@ window.onload = function () {
         // Get username and password from the form
         let username = document.getElementById('username').value;
         let password = document.getElementById('password').value;
-        enketoUrl = getEnketoViewUlr('aPJeBGZLjjJwgLZaYZQtsm', '35239549', username, password);
+        enketoUrl = getEnketoViewUlr(formId, submissionId, username, password);
         console.log('url: ' + enketoUrl)
     });
 };
