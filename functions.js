@@ -8,6 +8,7 @@ function getEnketoViewUlr(formid, submissionId, username, password) {
 
     headers.append('Content-Type', 'application/json');
     headers.append('Accept', 'application/json');
+    headers.append("Access-Control-Allow-Credentials", "true")
     headers.append('Authorization', 'Basic ' + btoa(username + ":" + password));
     //headers.append('Origin', 'http://localhost:63343');
     headers.append("Access-Control-Allow-Origin", "*");
