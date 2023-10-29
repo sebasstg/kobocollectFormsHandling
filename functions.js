@@ -6,6 +6,11 @@ function getEnketoViewUlr(formid, submissionId, username, password) {
     console.log(username);
     console.log(password);
 
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'POST, PUT, PATCH, GET, DELETE, OPTIONS');
+    headers.append('Access-Control-Allow-Headers', '*');
+
+
     // headers.append('Content-Type', 'application/json');
     // headers.append('Accept', 'application/json');
     // headers.append("Access-Control-Allow-Credentials", "true")
