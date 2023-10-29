@@ -10,7 +10,7 @@ function getEnketoViewUlr(formid, submissionId, username, password) {
     headers.append('Accept', 'application/json');
     headers.append("Access-Control-Allow-Credentials", "true")
     headers.append('Authorization', 'Basic ' + btoa(username + ":" + password));
-    //headers.append('Origin', 'http://localhost:63343');
+    headers.append('Origin', 'https://sebasstg.github.io/kobocollectFormsHandling/');
     headers.append("Access-Control-Allow-Origin", "*");
     headers.append("Access-Control-Allow-Headers",
         "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
