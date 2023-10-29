@@ -1,31 +1,22 @@
-function getEnketoViewUlr(formid, submissionId, username, password) {
+function getEnketoViewUlr(formId, submissionId, username, password) {
     // code to be executed
     // return statement (optional)
-    const apiUrl = 'https://kobo.unhcr.org/api/v2/assets/' + formid + '/data/' + submissionId + '/enketo/view/?return_url=false'; // Replace with your API endpoint URL
+
+    formid = 'aPJeBGZLjjJwgLZaYZQtsm';
+    submissionId = '35239549';
+    const apiUrl = 'http://localhost:8080/osmosys_sv/api/utils/test1'; // Replace with your API endpoint URL
     const headers = new Headers();
     console.log(username);
     console.log(password);
 
-    headers.append('Access-Control-Allow-Origin', '*');
-    headers.append('Access-Control-Allow-Methods', 'POST, PUT, PATCH, GET, DELETE, OPTIONS');
-    headers.append('Access-Control-Allow-Headers', '*');
-
-
-    // headers.append('Content-Type', 'application/json');
-    // headers.append('Accept', 'application/json');
-    // headers.append("Access-Control-Allow-Credentials", "true")
-    headers.append('Authorization', 'Basic ' + btoa(username + ":" + password));
-    //headers.append('Origin', 'https://sebasstg.github.io/kobocollectFormsHandling/');
-    //headers.append("Access-Control-Allow-Origin", "*");
-    //headers.append("Access-Control-Allow-Headers",        "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-    console.log(headers);
-    console.log(headers.get('Authorization'));
     fetch(apiUrl,
         {
             mode: "cors",
-            method: 'GET',
-            headers: headers,
-            // credentials: 'include',
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({username: username, password: password, formId: formId, submissionId: submissionId})
         }
     )
         .then(response => response.json())
@@ -33,6 +24,8 @@ function getEnketoViewUlr(formid, submissionId, username, password) {
             console.log(data);
             const formUrl = data.url;
             console.log(formUrl);
+            window.open(formUrl, "_self")
+
             return formUrl
         })
         .catch(error => console.error(error));
@@ -41,11 +34,12 @@ function getEnketoViewUlr(formid, submissionId, username, password) {
 // JavaScript text
 // JavaScript code to extract and display the parameter from the URL
 const urlParams = new URLSearchParams(window.location.search);
-const parameterValue = urlParams.get('parameter_name');
+const formId = urlParams.get('formId');
+const submissionId = urlParams.get('submissionId');
 
 // Display the parameter value on the web page
 const parameterDisplay = document.createElement('p');
-parameterDisplay.textContent = 'Parameter Value: ' + parameterValue;
+parameterDisplay.textContent = 'formId: ' + parameterValue;
 document.body.appendChild(parameterDisplay);
 
 
