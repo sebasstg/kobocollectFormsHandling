@@ -2,7 +2,7 @@ function getEnketoViewUlr(formId, submissionId, username, password) {
     // code to be executed
     // return statement (optional)
 
-    const apiUrl = 'https://imecuador.unhcr.org/osmosys_sv/api/utils/test1'; // Replace with your API endpoint URL
+    const apiUrl = 'https://imecuador.unhcr.org/osmosys_sv/api/utils/koboview'; // Replace with your API endpoint URL
     const headers = new Headers();
 
     fetch(apiUrl,
