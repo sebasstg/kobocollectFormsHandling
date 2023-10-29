@@ -38,6 +38,7 @@ window.onload = function () {
 
 
 
+
         fetch(apiUrl, {
             method: 'GET',
             headers: headers,
